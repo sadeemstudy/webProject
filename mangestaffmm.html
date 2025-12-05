@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html >
+<head>
+  <meta charset="UTF-8" />
+  <title>Manage Staff Members Page</title>
+  <link rel="stylesheet" href="STAYLE.css" />
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="AstroTours Logo" />
+	  	  <span class="site-title">AstroTours</span>
+
+    </div>
+    <nav>
+      <ul>
+          <li><a href="index.html">Home</a></li>
+        <li><a href="Services rev.html">Services</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li class="dropdown">
+          <a href="#">Dashboard ▾</a>
+          <div class="dropdown-content">
+            <a href="Customer.html">Customer</a>
+            <a href="provieder-dashbord.html">Provider</a>
+          </ul>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+ <!-- Breadcrumbs Section (Shared across pages) -->
+  <section class="crumbs-area">
+    <nav class="breadcrumbs">
+      <a href="index.html">Home</a> 
+	  	  	<span class="sep">›</span>
+      <a href="provieder-dashbord.html">Provider Dashboard</a> 
+	  	  	<span class="sep">›</span>
+      <a href="mangestaffmm.html" class="current">Manage Staff Members</a>
+    </nav>
+  </section>
+
+  <!-- خلفية الداشبورد -->
+  <div class="about-bg">
+
+    <!-- Manage Staff Members -->
+    <section id="manage-staff" class="manage-staff">
+      <div class="container">
+        <h2>Manage Staff Members</h2>
+
+        <!-- قائمة الموظفين -->
+        <div class="staff-list">
+          <h3>Staff Members</h3>
+
+          <div class="staff-container">
+            <!-- الموظفين الثمانية -->
+            <div class="staff-box">
+              <input type="checkbox" name="select-staff" id="staff-1" />
+              <img src="images/Sara Ahmed.jpg" alt="Sara Ahmed" />
+              <p class="name">Sara Ahmed</p>
+              <p class="role">Space Exploration Guide</p>
+              <a class="staff-link" href="staff-page1.html">View Page</a>
+            </div>
+
+            <div class="staff-box">
+              <input type="checkbox" name="select-staff" id="staff-2" />
+              <img src="images/Khalid Ali.jpg" alt="Khalid Ali" />
+              <p class="name">Khalid Ali</p>
+              <p class="role">Virtual Reality Developer</p>
+              <a class="staff-link" href="staff-page2.html">View Page</a>
+            </div>
+
+            <div class="staff-box">
+              <input type="checkbox" name="select-staff" id="staff-3" />
+              <img src="images/Mona Saad.jpg" alt="Mona Saad" />
+              <p class="name">Mona Saad</p>
+              <p class="role">Astronomical Research Specialist</p>
+              <a class="staff-link" href="staff-page3.html">View Page</a>
+            </div>
+
+            <div class="staff-box">
+              <input type="checkbox" name="select-staff" id="staff-4" />
+              <img src="images/Omar N..jpg" alt="Omar N." />
+              <p class="name">Omar N.</p>
+              <p class="role">Space Mission Coordinator</p>
+              <a class="staff-link" href="staff-page4.html">View Page</a>
+            </div>
+
+            <div class="staff-box">
+              <input type="checkbox" name="select-staff" id="staff-5" />
+              <img src="images/Lama F..jpg" alt="Lama F." />
+              <p class="name">Lama F.</p>
+              <p class="role">Educational Content Developer</p>
+              <a class="staff-link" href="staff-page5.html">View Page</a>
+            </div>
+
+            <div class="staff-box">
+              <input type="checkbox" name="select-staff" id="staff-6" />
+              <img src="images/Yousef H..jpg" alt="Yousef H." />
+              <p class="name">Yousef H.</p>
+              <p class="role">Science Educator</p>
+              <a class="staff-link" href="staff-page6.html">View Page</a>
+            </div>
+
+            <div class="staff-box">
+              <input type="checkbox" name="select-staff" id="staff-7" />
+              <img src="images/Reem A..jpg" alt="Reem A." />
+              <p class="name">Reem A.</p>
+              <p class="role">Operations Manager</p>
+              <a class="staff-link" href="staff-page7.html">View Page</a>
+            </div>
+
+            <div class="staff-box">
+
+
+<input type="checkbox" name="select-staff" id="staff-8" />
+              <img src="images/Faisal B..jpg" alt="Faisal B." />
+              <p class="name">Faisal B.</p>
+              <p class="role">Customer Relations Manager</p>
+              <a class="staff-link" href="staff-page8.html">View Profile</a>
+            </div>
+
+          </div><!-- /staff-container -->
+        </div><!-- /staff-list -->
+
+        <!-- زر Select All و Delete -->
+        <div class="select-delete-container">
+          <button class="select-all-btn">Select All</button>
+          <button class="delete-btn">Delete</button>
+        </div>
+
+        <!-- نموذج إضافة عضو جديد -->
+        <section class="add-new-staff">
+          <h3>Add New Staff Member</h3>
+          <form action="mangestaffmm.html" method="post">
+            <label for="staff-name">Name:</label>
+            <input id="staff-name" name="staff-name" type="text" required />
+
+            <label for="staff-dob">Date of Birth:</label>
+            <input id="staff-dob" name="staff-dob" type="date" required />
+
+            <label for="staff-email">Email:</label>
+            <input id="staff-email" name="staff-email" type="email" required />
+
+            <div class="large-input-box">
+              <label for="staff-expertise">Expertise, Education and skills:</label>
+              <textarea id="staff-expertise" name="staff-expertise" rows="3" placeholder="Describe expertise..."></textarea>
+            </div>
+
+            <label for="staff-photo">Upload Photo:</label>
+            <input id="staff-photo" name="staff-photo" type="file" required />
+
+            <button type="submit">Add Staff Member</button>
+          </form>
+        </section>
+
+      </div>
+    </section>
+</div>
+  <!-- /provider-bg -->
+
+  <!-- FOOTER  -->
+  <footer>
+    <div class="contact">
+      <h3>Contact Us</h3>
+      <p>Email: info@astrotours.com</p>
+      <p>Follow us:</p>
+      <div class="social-icons">
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <p class="copyright">© 2025 AstroTours. All Rights Reserved.</p>
+  </footer>
+<script src="script.js"></script>
+</body>
+</html>

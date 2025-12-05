@@ -1,0 +1,92 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Request Service Page</title>
+   
+    <link rel="stylesheet" href="STAYLE.css"> <!-- Link to STAYLE.css for shared styles -->
+</head>
+<body>
+    <!-- Header Section (shared across pages) -->
+    <header>
+        <div class="logo">
+            <img src="images/logo.jpg" alt="Logo">
+				  	  	  <span class="site-title">AstroTours</span>
+
+            
+        </div>
+        <nav>
+            <ul>
+         <li><a href="index.html">Home</a></li>
+        <li><a href="Services rev.html">Services</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li class="dropdown">
+          <a href="#">Dashboard ▾</a>
+          <div class="dropdown-content">
+            <a href="Customer.html">Customer</a>
+            <a href="provieder-dashbord.html">Provider</a>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Breadcrumbs Section (shared across pages) -->
+    <section class="crumbs-area">
+        <nav class="breadcrumbs">
+            <a href="index.html" >Home</a> 
+				     <span class="sep">›</span>
+			<a href="Customer.html" >Customer-Dashboard</a> 
+				     <span class="sep">›</span>
+            <a href="service.html" class="current">Request Service</a>
+        </nav>
+    </section>
+<div class="about-bg">
+     
+    <div class="S-container"> <!-- Unique class for Service page container -->
+	<br><br><br>
+        <h1>Requesting Service</h1>
+		<br><br>
+        <form action="#" method="POST" class="S-form"> <!-- Unique form class -->
+            <label for="service" class="S-label">Select Service</label> <!-- Unique label class -->
+			<br>
+            <select id="service" name="service" class="S-input"> <!-- Unique select class -->
+                <option value="service1">Virtual Mars Walk</option>
+                <option value="service2">ISS Simulation</option>
+                <option value="service3">Black Hole Exploration</option>
+                <option value="service4">Stargazing Session</option>
+				  <option value="service4">Educational workshop</option>
+            </select>
+
+            <label for="datetime" class="S-label">Choose Time And Date</label>
+            <input type="datetime-local" id="datetime" name="datetime" class="S-input"> <!-- Unique input class -->
+
+            <label for="customer-name" class="S-label">Name of Customer</label>
+            <input type="text" id="customer-name" name="customer-name" placeholder="Enter your name" required class="S-input"> <!-- Unique input class -->
+
+            <label for="description" class="S-label">Enter Your Request Description</label>
+            <textarea id="description" name="description" placeholder="Enter your request description...." required class="S-input"></textarea> <!-- Unique textarea class -->
+
+            <button type="submit" class="S-button">Request</button> <!-- Unique button class -->
+        </form>
+    </div>
+	</div>
+
+     <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="contact">
+      <h3>Contact Us</h3>
+      <p>Email: info@astrotours.com</p>
+      <p>Follow us:</p>
+      <div class="social-icons">
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <p class="copyright">© 2025 AstroTours. All Rights Reserved.</p>
+  </footer>
+  <script src="script.js" defer></script>
+
+</body>
+</html>

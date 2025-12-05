@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>AstroTours — Services</title>
+  <link rel="stylesheet" href="STAYLE.css">
+</head>
+<body class="services-page">
+
+  <!-- ===== HEADER / NAVBAR ===== -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="AstroTours Logo">
+	  <span class="site-title">AstroTours</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Services rev.html">Services</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+		
+        <li class="dropdown">
+           <a href="#">Dashboard ▾</a>
+           <ul class="dropdown-content">
+            <a href="Customer.html">Customer</a>
+            <a href="provieder-dashbord.html">Provider</a>
+          </ul>
+        </li>
+		
+		
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== BREADCRUMBS ===== -->
+  <section class="crumbs-area">
+    <nav class="breadcrumbs">
+      <a href="index.html">Home</a>
+      <span class="sep">›</span>
+      <a href="Services rev.html" class="current">Services</a>
+    </nav>
+  </section>
+
+  <!-- ===== SORTING BAR ===== -->
+  <section class="services-controls">
+  <button class="filter-btn">
+      <img src="images/filter.png" alt="Filter icon">
+    </button>
+    <form class="sort-form" action="#" method="get">
+      <label for="sortBy">Sort by:</label>
+      <select id="sortBy" name="sort">
+        <option value="name-az">Name: A → Z</option>
+        <option value="name-za">Name: Z → A</option>
+      </select>
+    </form>
+
+    <!-- Filter Icon -->
+    
+  </section>
+
+  <!-- ===== INTRO TEXT ===== -->
+  <section class="services-intro">
+    <p class="fade-glow" >"Embark on a cosmic journey through our exclusive range of virtual space experiences.  
+  From walking on Mars to exploring black holes — each service is designed to bring the universe closer to you."</p>
+  </section>
+
+  <!-- ===== SERVICES GRID ===== -->
+  <section class="services-container c2" >
+
+    <article class="service-card c1">
+      <img src="images/service-mars.jpg" alt="Virtual Mars Walk image">
+      <h3>🪐Virtual Mars Walk</h3>
+      <p><strong>Price:</strong> 150 SAR</p>
+      <p>Step onto the surface of Mars without leaving Earth. This guided virtual experience lets you explore the planet’s vast red deserts, mysterious canyons,
+	  and frozen poles in high detail. Walk among ancient craters and uncover the secrets scientists believe lie beneath the Martian soil — all from the comfort of your screen.
+      </p>
+  <button class="book-btn" onclick="window.location.href='Service.html'">Book Now</button>
+    </article>
+
+    <article class="service-card c1">
+      <img src="images/service-iss.jpg" alt="International Space Station simulation image">
+      <h3>🚀ISS Simulation</h3>
+      <p><strong>Price:</strong> 120 SAR</p>
+      <p>Experience life aboard the International Space Station through a realistic virtual simulation. 
+	  Float in zero gravity, move through the station’s modules, and discover how astronauts eat, sleep, and conduct scientific research while orbiting Earth.
+	  Feel what it’s like to live among the stars — surrounded by the endless void of space.
+     </p>
+  <button class="book-btn" onclick="window.location.href='Service.html'">Book Now</button>
+    </article>
+
+    <article class="service-card c1">
+      <img src="images/service-blackhole.jpg" alt="Black hole exploration visual">
+      <h3>🌀Black Hole Exploration</h3>
+      <p><strong>Price:</strong> 115 SAR</p>
+      <p>Travel beyond the limits of light and time. In this stunning simulation, you’ll witness the raw power of a black hole — from its swirling accretion disk to the point of no return.
+	  Learn how scientists study these cosmic giants and what happens when matter disappears into their mysterious depths.
+      </p>
+  <button class="book-btn" onclick="window.location.href='Service.html'">Book Now</button>
+    </article>
+
+    <article class="service-card c1">
+      <img src="images/service-stars.jpg" alt="Stargazing Session image">
+      <h3>✨Stargazing Session</h3>
+      <p><strong>Price:</strong> 150 SAR</p>
+      <p>Relax under a digital night sky filled with millions of stars.
+	  Join our guided stargazing session to explore constellations, spot visible planets, and uncover myths and stories from ancient civilizations that once mapped the heavens.
+      </p>
+  <button class="book-btn" onclick="window.location.href='Service.html'">Book Now</button>
+    </article>
+	
+	<article class="service-card c1">
+      <img src="images/service-Workshop.jpg" alt="Lunar Base Tour image">
+      <h3>📚 Educational Workshop
+</h3>
+      <p><strong>Price:</strong> 130 SAR</p>
+      <p>Join our live virtual workshop designed for curious minds of all ages. Learn about fascinating space phenomena — from eclipses and meteor showers to galaxy formation — through interactive visuals,
+	  real astronomical footage, and guidance from an expert astronomer.
+      </p>
+  <button class="book-btn" onclick="window.location.href='Service.html'">Book Now</button>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer>
+    <div class="contact">
+      <h3>Contact Us</h3>
+      <p>Email: info@astrotours.com</p>
+      <p>Follow us:</p>
+      <div class="social-icons">
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <p class="copyright">© 2025 AstroTours. All Rights Reserved.</p>
+  </footer>
+
+<script src="script.js" defer></script>
+
+</body>
+</html>

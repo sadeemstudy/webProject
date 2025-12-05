@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>Add New Service</title>
+  <link rel="stylesheet" href="STAYLE.css" />
+</head>
+<body>
+
+  <!-- HEADER  -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="AstroTours Logo" />
+      <span class="site-title">AstroTours</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Services rev.html">Services</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li class="dropdown">
+          <a href="#">Dashboard ▾</a>
+          <div class="dropdown-content">
+            <a href="Customer.html">Customer</a>
+            <a href="provieder-dashbord.html">Provider</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+ <!-- Breadcrumbs Section (Shared across pages) -->
+  <section class="crumbs-area">
+    <nav class="breadcrumbs">
+      <a href="index.html">Home</a> 
+      <span class="sep">›</span>
+      <a href="provieder-dashbord.html">Provider Dashboard</a>
+      <span class="sep">›</span>
+      <a href="addnewService.html" class="current">Add New Service</a>
+    </nav>
+  </section>
+
+  <!-- خلفية الصفحة -->
+  <div class="about-bg">
+
+    <!-- Add New Service -->
+    <section id="add-new-service" class="add-new-service">
+      <div class="container">
+        <h2>Add New Service</h2>
+
+        <form id="add-new-service-form" method="post" enctype="multipart/form-data">
+          <label for="service-image">Upload Image:</label>
+          <input id="service-image" name="service-image" type="file" required />
+    
+          <label for="service-name">Service Name:</label>
+          <input id="service-name" name="service-name" type="text" required />
+
+          <label for="service-description">Description:</label>
+          <textarea id="service-description" name="service-description" rows="4" placeholder="Write the service description..." required></textarea>
+
+          <label for="service-price">Service Price:</label>
+          <input id="service-price" name="service-price" type="text" required />
+
+          <button type="submit">Add Service</button>
+        </form>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- FOOTER  -->
+  <footer>
+    <div class="contact">
+      <h3>Contact Us</h3>
+      <p>Email: info@astrotours.com</p>
+      <p>Follow us:</p>
+      <div class="social-icons">
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <p class="copyright">© 2025 AstroTours. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script> <!-- Link to the JavaScript file -->
+</body>
+</html>

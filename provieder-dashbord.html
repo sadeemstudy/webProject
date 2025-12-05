@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Provider Dashboard</title>
+  <link rel="stylesheet" href="STAYLE.css" />
+</head>
+<body>
+
+  <!-- HEADER  -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.jpg" alt="AstroTours Logo" />
+         <span class="site-title">AstroTours</span>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="Services rev.html">Services</a></li>
+        <li><a href="about-us.html">About Us</a></li>
+        <li class="dropdown">
+          <a href="#">Dashboard ▾</a>
+          <div class="dropdown-content">
+            <a href="Customer.html">Customer</a>
+            <a href="provieder-dashbord.html">Provider</a>
+          </div>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- ===== BREADCRUMBS ===== -->
+  <section class="crumbs-area">
+    <nav class="breadcrumbs">
+      <a href="index.html">Home</a> 
+      <span class="sep">›</span>
+      <a href="provieder-dashbord.html" class="current">Provider Dashboard</a>
+    </nav>
+  </section>
+
+  <!-- خلفية الداشبورد -->
+  <div class="about-bg">
+
+    <!-- Main Dashboard -->
+    <section id="provider-dashboard" class="provider-dashboard">
+      <div class="container">
+        <h2>Provider Dashboard</h2>
+
+        <!-- List of Services -->
+        <div class="service-list">
+          <h3>My Services</h3>
+
+          <!-- الرسالة الجديدة -->
+          <div id="no-services-msg">
+            <h3>No Services Available</h3>
+            <p>You haven't added any services yet.</p>
+            <p>
+              Please visit the 
+              <a href="addnewService.html">Add New Service</a> 
+              page to create your first service.
+            </p>
+          </div>
+
+          <!-- حاوية الخدمات - بتكون فارغة أول مرة -->
+          <div id="service-container" class="service-container">
+            <!-- الخدمات راح تضاف هنا عن طريق JavaScript فقط -->
+          </div>
+        </div><!-- /service-list -->
+
+        <!-- Action Buttons Section -->
+        <section class="actions-section">
+          <div class="actions-container">
+
+            <a href="addnewService.html" class="action-box">
+              <span class="action-text">Add New Service</span>
+              <span class="arrow">➜</span>
+            </a>
+
+            <a href="mangestaffmm.html" class="action-box">
+              <span class="action-text">Manage Staff Members</span>
+              <span class="arrow">➜</span>
+            </a>
+
+          </div>
+        </section>
+
+      </div>
+    </section>
+   
+  </div><!-- /provider-bg -->
+
+  <!-- FOOTER  -->
+  <footer>
+    <div class="contact">
+      <h3>Contact Us</h3>
+      <p>Email: info@astrotours.com</p>
+      <p>Follow us:</p>
+      <div class="social-icons">
+        <a href="#">Twitter</a>
+        <a href="#">Instagram</a>
+        <a href="#">LinkedIn</a>
+      </div>
+    </div>
+    <p class="copyright">© 2025 AstroTours. All Rights Reserved.</p>
+  </footer>
+
+  <script src="script.js"></script>
+  
+</body>
+</html>

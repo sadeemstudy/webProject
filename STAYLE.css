@@ -1,0 +1,2395 @@
+/* ===============================
+   ASTROTOURS - HOME PAGE STYLE
+   =============================== */
+
+/* ========== RESET ========== */
+
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+img {
+ 
+  display: block;
+}
+body {
+	background-image: url("images/space stars.jpg");
+  font-family: Verdana, sans-serif;
+  background-color: #0b0f2a;
+  background-attachment: fixed;
+  background-size: cover;
+  color: #e8eefc;
+}
+body::before{
+ content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.45); /* ← غامق شوي، غيري الشفافية لو تبين */
+  z-index: -1; /* يخليه خلف كل المحتوى */
+}
+
+/* ========== NAVBAR ========== */
+/* Sticky, glassy header with flex alignment between logo and nav */
+header {
+  background-color: rgba(11, 15, 42, 0.8);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  display: flex;
+  align-items: center; /* يخليهم بنفس الخط */
+  justify-content: space-between; /* يوزّع اللوجو واللينكات */
+  padding: 10px 40px;
+}
+.logo {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	
+}
+/* Logo size and baseline alignment inside header */
+header .logo img {
+  height: 120px; /* غيّري الرقم حسب اللي يناسب التصميم */
+  vertical-align: middle;
+}
+.logo .site-title {
+  font-size: 1.9rem;
+  font-weight: 700;
+  color: #dbe4ff;
+  letter-spacing: 1px;
+  text-shadow: 
+    0 0 8px rgba(150, 180, 255, 0.6),
+    0 0 20px rgba(120, 150, 255, 0.5);
+  animation: titleGlow 2s ease-in-out infinite alternate;
+}
+
+/* توهج متدرج خفيف */
+@keyframes titleGlow {
+  0% {
+    filter: brightness(0.9);
+    text-shadow: 
+      0 0 6px rgba(200, 150, 255, 0.6),
+      0 0 15px rgba(230, 120, 255, 0.6);
+  }
+  100% {
+    filter: brightness(1.2);
+    text-shadow:
+      0 0 10px rgba(220, 150, 255, 0.9),
+      0 0 25px rgba(255, 130, 240, 0.9),
+      0 0 45px rgba(255, 160, 255, 1);
+  }
+}
+
+/* Main nav container: horizontal alignment + spacing */
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 12px 40px;
+  font-size: 20px;
+}
+
+
+/* Top-level nav list: inline items with gap */
+header ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+  pad
+}
+/* Nav links: subtle color + hover emphasis */
+header ul li a {
+  color: #9fb0d9;
+  text-decoration: none;
+  font-weight: bold;
+  transition: 0.3s;
+  padding:12px;
+}
+/* Hover: brighten + glowing shadow */
+header ul li a:hover {
+  color: white;
+    filter: brightness(1.25);
+	box-shadow: 0 0 50px rgba(255, 255, 0, 0.6);
+
+
+}
+
+/* Dropdown Menu */
+/* Parent positions its popup; slight padding under trigger */
+ .dropdown {
+  position: relative;
+  padding-bottom: 8px;
+}
+/* Popup panel hidden by default; absolutely positioned */
+ .dropdown-content {
+  display: none  ;
+  position: absolute;
+  top: 100%;
+  right: 0;
+  background-color: #11173a;
+  /*border: 1px solid rgba(255, 255, 255, 0.1);*/
+  border-radius: 8px;
+  padding: 12px;
+}
+/* Dropdown item links: block hit-area with padding */
+.dropdown-content a {
+  display: block;
+  padding: 20px 17px;
+  color:  #9fb0d9;
+
+}
+
+.dropdown:hover > .dropdown-content { display: block; }
+
+
+/* ========== BREADCRUMBS ========== */
+/* Breadcrumbs container: animated nebula bar with rounded edges */
+.crumbs-area{
+  position: relative;
+  padding: 12px 20px;              /* ارتفاع الشريط */
+  border-radius: 16px;
+  overflow: hidden;
+  margin: 18px auto 10px;          /* مسافة عن الأعلى */
+  max-width: 100%;               /* لو تبينها بعرض المحتوى */
+
+
+  /* كود النجوم اللي تتحرك وشريط البريدكرمبز كله */
+  background:
+    /* ى من اليسار */
+    radial-gradient(1200px 520px at 0% 0%,
+      rgba(173, 80, 255, 0.75),  /* ← رفعت الألفا والتشبع */
+      rgba(173, 80, 255, 0.00) 68%),
+
+    /*  أوضح من اليمين */
+    radial-gradient(900px 420px at 100% 50%,
+      rgba(255, 70, 170, 0.60),   /* ← برضو تشبع وألفا أعلى */
+      rgba(255, 70, 170, 0.00) 72%),
+
+    /* وهج أزرق خفيف يوازن منتصف الشريط */
+    radial-gradient(700px 350px at 50% 65%,
+      rgba(60, 140, 255, 0.28),
+      rgba(60, 140, 255, 0.0) 70%),
+
+    /* الخلفية الداكنة الأساسية بتدرّج أعمق */
+    linear-gradient(90deg,
+      #0a0f28, /* أزرق كحلي أعمق */
+      #151a48 58%,
+      #27135f);
+  
+  /*  هنا لتعديل الالوان وتحته الحركة لنجوم والظل له*/
+  filter: saturate(1.25) contrast(1.08);
+  animation: nebulaShift 22s linear infinite;
+  box-shadow: 0 70px 30px rgba(255,255,255,.25);
+}
+
+/* =============================================================*/
+/* النجوم سويت طبقه فوق وطبقه تحت عشان يطلع شكلها كذا*/
+
+.crumbs-area::before{
+  content:"";
+  position:absolute; inset:-20% -12%;
+  pointer-events:none;  opacity: 1;filter: ;
+  filter:
+    brightness(1.38)
+    drop-shadow(0 0 6px  rgba(255, 255, 220, 1))
+    drop-shadow(0 0 14px rgba(255, 245, 160, 0.95))
+    drop-shadow(0 0 28px rgba(255, 230, 110, 0.9))
+    drop-shadow(0 0 48px rgba(255, 210, 80, 0.8))
+    drop-shadow(0 0 72px rgba(255, 200, 60, 0.6));
+
+  /* white + yellow stars )  كود النجوم كل سطر هو مجوعه نجوم تظهر*/
+  background:
+    radial-gradient(circle, rgba(255,255,255,.90) 0 4px,   transparent 4.6px),
+    radial-gradient(circle, rgba(255,240,120,.90) 0 3.2px, transparent 3.8px),
+    radial-gradient(circle, rgba(255,255,200,.85) 0 2.6px, transparent 3.1px),
+    radial-gradient(circle, rgba(255,255,255,.80) 0 2.2px, transparent 2.7px),
+    radial-gradient(circle, rgba(255,255, 60,.85) 0 2.0px, transparent 2.5px),
+    radial-gradient(circle, rgba(255,255,255,.80) 0 1.6px, transparent 2.0px),
+    radial-gradient(circle, rgba(255,230,120,.80) 0 1.4px, transparent 1.8px);
+
+  /* smaller tiles => more repetition => more stars */
+  background-size:     220px 140px, 190px 130px, 160px 110px, 210px 130px,
+                       220px 140px, 190px 130px, 160px 110px;
+  background-position: 0 0, 80px 40px, 150px 70px, 200px 120px,
+                       40px 10px, 120px 90px, 200px 40px;
+  background-repeat: repeat;
+
+  /* independent drift + twinkle  وقت حركتها */
+  animation: starDrift 10s linear infinite,
+             starTwinkle 2.6s ease-in-out infinite alternate;
+}
+/*================================================================================*/
+/* ---------- Stars Layer #2 (extra density + desync motion) ---------- */
+/*    الطبقه الثانيه */
+.crumbs-area::after{
+  content:"";
+  position:absolute; inset:-20% -12%;
+  pointer-events:none;
+  mix-blend-mode:screen;
+
+  background:
+    radial-gradient(circle, rgba(255,255,255,.85) 0 1.6px, transparent 1.9px),
+    radial-gradient(circle, rgba(255,235,120,.80) 0 2.2px, transparent 2.6px),
+    radial-gradient(circle, rgba(255,255,255,.90) 0 1.3px, transparent 1.6px),
+    radial-gradient(circle, rgba(255,245,160,.85) 0 1.8px, transparent 2.2px);
+  background-size:     260px 170px, 200px 140px, 180px 120px, 220px 150px;
+  background-position: 40px 30px,   120px 80px,  200px 110px, 60px 140px;
+
+  animation: starDrift2 14s linear infinite,
+             starTwinkleB 3.3s ease-in-out infinite alternate;
+
+}
+
+/* ===== عشان تصير البريد كرمبز برضو روابط ===== */
+.breadcrumbs{
+  position: relative; z-index: 1;       /* فوق النجوم */
+  display: flex; gap: 10px; align-items: center;
+  color: #cbd4ff; font-weight: 600;
+    filter: brightness(-30);
+
+}
+
+.breadcrumbs a{
+  color: #e6ebff; text-decoration: none;
+  padding: 6px 12px;
+  border-radius: 10px;
+  transition: .25s;
+  background: rgba(255,255,255,.06)    /* زجاج خفيف */
+              backdrop-filter: blur(6px);
+  border: 1px solid rgba(255,255,255,.08);
+}
+.breadcrumbs a:hover{ color:#fff; background: rgba(255,255,255,.12); }
+
+.current{
+  color:#fff;
+  padding:6px 12px;
+  border-radius:10px;
+  background: rgba(255,255,255,.16);
+  border: 1px solid rgba(255,255,255,.14);
+}
+
+.sep{ opacity: 1;}
+
+
+
+/* ========== HERO SECTION ========== */
+.hero {
+  background-image: url("images/hero.jpg"); 
+  background-size: cover; /* تخليها تغطي كل المساحة */
+  background-position: center; /* تخلي الصورة متوسّطة */
+  background-repeat: no-repeat; /* تمنع التكرار */
+  height: 80vh; /* ارتفاع الهيرو (80% من الشاشة) */
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  text-align: center;
+  position: relative;
+   background-attachment: fixed;
+  color: #ffffff;
+  text-align: center;
+  padding: 160px 20px 140px;
+  overflow: hidden;
+
+  
+  
+  
+}
+.hero::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 30, 0.5); /* ظل أزرق غامق خفيف */
+  z-index: 0;
+}
+
+.hero * {
+  position: relative;
+  z-index: 1; /* يخلي النص فوق الخلفية */
+}
+
+.hero h1 {
+    font-family: 'Orbitron', sans-serif;
+    font-size: 3rem;
+    font-weight: 900;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: #ffffff;
+    text-shadow:
+        0 0 12px rgba(12, 180, 255, 0.4),
+        0 0 22px rgba(16, 80, 255, 0.9);
+}
+.hero p {
+    font-family: 'Exo 2', sans-serif;
+    font-size: 1.2rem;
+    font-weight: 400;
+    color: #e5e7ff;
+    letter-spacing: 0.5px;
+}
+.hero button {
+  padding: 25px 55px;
+  border: none;
+  border-radius: 25px;
+  margin-top: 65px;
+background: linear-gradient(135deg, #ff8a34, #6a00ff); 
+  color: #fff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: 0.3s;
+  animation: floaty 3s ease-in-out infinite;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  font-family: 'Exo 2', sans-serif;
+    font-size: 0.70rem;
+    font-weight: 600;
+    letter-spacing: 0.7px;
+
+}
+#start-btn{
+	    font-size: 25px;
+}
+@keyframes floaty {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-10px); }
+  100% { transform: translateY(0); }
+}
+
+.hero button:hover {
+	transform: translateY(-2px) scale(1.03);
+  filter: brightness(1.25);
+  box-shadow: 0 0 50px rgba(255, 255, 255, 0.6); 
+}
+
+/* ========== VISION & MISSION ========== */
+.vision-mission {
+    padding: 6rem 8%;
+    display: flex;
+    justify-content: center;
+    gap: 3rem;
+    flex-wrap: wrap;
+}
+.vision,
+.mission {
+    position: relative;
+    max-width: 420px;
+    padding: 2.5rem 2.0rem;
+    border-radius: 24px;
+
+    border: 1px solid rgba(157, 115, 255, 0.6); /* حافة بنفسجية خفيفة */
+
+    color: #f5f3ff;
+    text-align: center;
+    overflow: hidden;
+
+    transform: translateY(24px);
+    opacity: 0;
+    animation: vmFadeUp 0.9s ease forwards;
+
+    transition:
+        transform 0.35s ease,
+        box-shadow 0.35s ease,
+        border-color 0.35s ease;
+}
+
+/* تأخير بسيط للكرت الثاني */
+.vision-mission .mission {
+    animation-delay: 0.15s;
+}
+
+.vision h2,
+.mission h2 {
+    font-size: 1.8rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #e2d6ff;
+
+    text-shadow:
+        0 0 10px rgba(166, 120, 255, 0.9),
+        0 0 22px rgba(255, 134, 224, 0.7);
+}
+
+/* توهّج خفيف في الخلفية عند الهوفر على الكرت */
+.vision::before,
+.mission::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background:
+        radial-gradient(circle at top left,
+            rgba(255, 120, 224, 0.22), transparent 60%);
+    opacity: 0;
+    pointer-events: none;
+    z-index: -1;
+    transition: opacity 0.4s ease;
+}
+
+
+.vision:hover,
+.mission:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 26px 55px rgba(0, 0, 0, 0.85);
+    border-color: #ff7ad1;
+}
+
+.vision:hover::before,
+.mission:hover::before {
+    opacity: 1;
+}
+.vision p,
+.mission p {
+    font-size: 0.98rem;
+    line-height: 1.7;
+    color: #d9d4ff;
+    margin: 0;
+}
+@keyframes vmFadeUp {
+    from {
+        opacity: 0;
+        transform: translateY(24px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+/* ========== SERVICES PREVIEW ========== */
+.services-preview {
+  padding: 60px 20px;
+  text-align: center;
+}
+.services-preview h3 {
+	  font-family: 'Exo 2', sans-serif;
+
+	 font-size: 1.8rem;
+    margin-bottom: 1rem;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: #e2d6ff;
+
+    text-shadow:
+        0 0 10px rgba(166, 120, 255, 0.9),
+        0 0 22px rgba(255, 134, 224, 0.7);
+  margin-bottom: 30px;
+}
+
+.services-preview h2{
+ 
+ margin-bottom: 30px;
+  font-family: 'Exo 2', sans-serif;
+   text-shadow:
+        0 0 10px rgba(255, 248, 189, 0.4),
+        0 0 22px rgba(255, 134, 224, 0.5);
+
+
+}
+.services-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 25px;
+}
+.service-card {
+  position: relative;
+  width: 350px;
+  height: 432px;
+  border-radius: 12px;
+  overflow: hidden;
+  background-color: rgba(17, 23, 58, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: 0.4s;
+}
+.service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 70px rgba(140, 170, 255, 0.6);
+}
+.service-card img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: 0.4s;
+  z-index:1;
+  position:relative;
+}
+.service-info {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(11, 15, 42, 0.85); /* طبقة غامقة شفافة */
+  color: white;
+  opacity: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  transition: opacity 0.5s ease;
+  z-index: 2;
+}
+.service-card:hover .service-info {
+  opacity: 1;
+}
+.service-card h3,.service-card h2 {
+  margin: 15px 0 8px;
+  padding: 0 15px;
+}
+
+.service-card p {
+  color: #9fb0d9;
+  font-size: 14px;
+  padding: 0 15px;
+}
+.service-card button {
+  margin: 15px 0 20px;
+  padding: 8px 15px;
+  border: none;
+  border-radius: 6px;
+  background-color: #7b6dff;
+  color: #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.service-card button:hover {
+  background-color: #39d5ff;
+   filter: brightness(0.85);
+}
+
+
+
+
+
+/* ========== FOOTER ========== */
+
+footer {
+  text-align: center ;
+  padding: 25px 0;
+  background-color: rgba(14, 19, 53, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+footer h3 {
+  margin-bottom: 10px;
+  color: #7b6dff;
+}
+footer p {
+  color: #9fb0d9;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+footer a {
+  color: #39d5ff;
+  margin: 0 8px;
+  text-decoration: none;
+}
+footer a:hover {
+  text-decoration: underline;
+}
+footer .copyright {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #7b7b7b;
+}
+
+/* ================================
+   RESPONSIVE DESIGN - HOME PAGE
+   نعتمد فقط على الكلاسات الموجودة في HTML
+   ================================ */
+
+/* شاشات متوسطة (تابلت تقريبًا) */
+@media (max-width: 900px) {
+
+  /* الهيدر: نخلي الشعار فوق والناف تحت */
+
+
+  /* تصغير ارتفاع الهيدر */
+  header {
+    padding: 1px 1px;      /* بدل 20px أو أي قيمة كبيرة */
+    height: auto;           /* يخليه أصغر */
+  }
+
+  /* تصغير اللوجو */
+  header .logo img {
+    width: 30px;            /* بدل 50–60 */
+    height: 30px;
+  }
+
+  .site-title {
+    font-size: 10px;      /* تصغير النص */
+  }
+
+  /* الناف بار يصير صغير وما ينزل سطر على طول */
+  header nav ul {
+    gap: 5px;               /* مسافة أقل */
+  }
+
+  header nav ul li a {
+    font-size: 0.55rem;     /* نص أصغر */
+    padding: 3px 6px;       /* بادنق صغير */
+  }
+
+
+  /* البريـدكرمبز */
+  .crumbs-area {
+    padding: 5px 15px;
+  }
+
+  .breadcrumbs {
+    font-size: 0.9rem;
+  }
+
+  /* الهيرو: نخلي النص في الوسط ومساحة أقل */
+  .hero {
+    padding: 40px 15px;
+    text-align: center;
+  }
+
+  .hero h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+  }
+
+  .hero p {
+    max-width: 500px;
+    margin: 0 auto 15px;
+    font-size: 0.95rem;
+  }
+
+  #start-btn {
+    padding: 8px 18px;
+    font-size: 0.95rem;
+  }
+
+  /* فيجن + ميشن: رص عمودي بدل أفقي */
+  .vision-mission {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    padding: 25px 15px;
+  }
+
+  .vision,
+  .mission {
+    /* نخلي كل وحدة تاخذ العرض كامل */
+    width: 100%;
+  }
+
+  /* الخدمات: نسمح للكروت تنزل تحت بعض لو المساحة ضاقت */
+  .services-preview {
+    padding: 30px 15px;
+  }
+
+  .services-preview h2 {
+    text-align: center;
+    margin-bottom: 15px;
+  }
+
+  .services-container {
+    display: flex;           /* لو كنتِ حاطته أصلاً ما يتغيّر شيء */
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+  }
+
+  .service-card {
+    flex: 1 1 260px;         /* كرت أو اثنين في الصف حسب المساحة */
+    max-width: 320px;
+    margin: 0 auto;
+  }
+
+  .service-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+  /* الفوتر: توزيع أبسط */
+  footer {
+    padding: 20px 15px;
+    text-align: center;
+  }
+
+  footer .contact {
+    margin-bottom: 10px;
+  }
+
+  footer .social-icons {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+
+  /* زر الرجوع للأعلى */
+  #backToTop {
+    right: 15px;
+    bottom: 15px;
+  }
+}
+
+/* شاشات صغيرة (جوال) */
+@media (max-width: 600px) {
+
+  /* نص الجسم يصغر شوي */
+  body {
+    font-size: 14px;
+  }
+
+  /* الهيدر: نخلي كل شيء عمودي تقريبًا */
+
+
+  /* تصغير ارتفاع الهيدر */
+  header {
+    padding: 6px 10px;      /* بدل 20px أو أي قيمة كبيرة */
+    height: auto;           /* يخليه أصغر */
+  }
+
+  /* تصغير اللوجو */
+  header .logo img {
+    width: 30px;            /* بدل 50–60 */
+    height: 30px;
+  }
+
+  .site-title {
+    font-size: 0.8rem;      /* تصغير النص */
+  }
+
+  /* الناف بار يصير صغير وما ينزل سطر على طول */
+  header nav ul {
+    gap: 5px;               /* مسافة أقل */
+    flex-wrap: nowrap;      /* ما يلف عدة أسطر */
+  }
+
+  header nav ul li a {
+    font-size: 0.75rem;     /* نص أصغر */
+    padding: 3px 6px;       /* بادنق صغير */
+  }
+
+  /* البريـدكرمبز وسط */
+  .crumbs-area {
+    text-align: center;
+  }
+
+  /* الهيرو */
+  .hero {
+    padding: 30px 12px;
+  }
+
+  .hero h1 {
+    font-size: 1.5rem;
+  }
+
+  .hero p {
+    font-size: 0.9rem;
+  }
+
+  #start-btn {
+    padding: 7px 16px;
+    font-size: 0.85rem;
+  }
+
+  /* فيجن + ميشن */
+  .vision-mission {
+    padding: 20px 12px;
+  }
+
+  .vision-mission h2 {
+    font-size: 1.1rem;
+  }
+
+  .vision-mission p {
+    font-size: 0.9rem;
+  }
+
+  /* الخدمات: كرت واحد في الصف */
+  .services-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .service-card {
+    width: 100%;
+    max-width: 350px;
+  }
+
+  .service-card h2,
+  .service-card h3 {
+    font-size: 1rem;
+  }
+
+  .service-card p {
+    font-size: 0.9rem;
+  }
+  
+  .service-card img {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+
+
+  .service-card button {
+    padding: 6px 14px;
+    font-size: 0.85rem;
+  }
+
+  /* الفوتر كامل في عمود واحد */
+  footer .contact {
+    text-align: center;
+  }
+
+  footer .social-icons a {
+    font-size: 0.9rem;
+  }
+
+  .copyright {
+    font-size: 0.8rem;
+  }
+
+  /* زر الرجوع للأعلى يصغر شوي */
+  #backToTop {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+  }
+}
+  
+
+
+/* ===== Animated Gradients & Stars - KEYFRAMES ===== */
+/* هذا السيكشن يخص حركة النجوم  */
+
+/* خلفية النيبولا (التدرّج) */
+@keyframes nebulaShift{
+  0%   { background-position: 0 0, 100% 50%, 0 0; }
+  100% { background-position: -15% -5%, 85% 60%, 0 0; }
+}
+
+/* انزلاق النجوم للطبقة الأولى (::before) — 7 طبقات */
+@keyframes starDrift{
+  0% {
+    background-position:
+      0 0,         80px 40px,   150px 70px,
+      200px 120px, 40px 10px,   120px 90px,
+      200px 40px;
+  }
+  100% {
+    background-position:
+      -320px 210px, -200px 150px, -160px 110px,
+      -300px 200px, -260px 120px, -180px 160px,
+      -300px 210px;
+  }
+}
+
+/* انزلاق النجوم للطبقة الثانية (::after) — 4 طبقات */
+@keyframes starDrift2{
+  0% {
+    background-position: 40px 30px, 120px 80px, 200px 110px, 60px 140px;
+  }
+  100% {
+    background-position: -400px 260px, -260px 190px, -220px 160px, -300px 210px;
+  }
+}
+
+/* وميض النجوم */
+@keyframes starTwinkle  { 0% {filter:brightness(.7)} 100% {filter:brightness(3)} }
+@keyframes starTwinkleB { 0% {filter:brightness(.6)} 100% {filter:brightness(10)} }
+
+
+/* ========== BACK TO TOP BUTTON ========== */
+#backToTop {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  border: none;
+  background: linear-gradient(135deg, #7b6dff, #39d5ff);
+  color: white;
+  font-size: 22px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 18px rgba(0, 0, 0, 0.6);
+  display: none;              /* مخفي في البداية */
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease;
+  opacity: 0.9;
+  z-index: 999;
+}
+
+#backToTop:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 30px rgba(120, 160, 255, 0.9);
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ========== SERVICES PAGE ========== */
+
+/* Sorting section (الفرز والفلتر) */
+.services-controls {
+  display: flex;
+  align-items: center;
+  justify-content:flex-start;
+  max-width: 1080px;
+  margin: 25px 25px;
+  
+}
+
+.sort-form {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.sort-form label {
+  font-weight: 600;
+  color: #e6ebff;
+}
+
+.sort-form select {
+  background-color: #11173a;
+  color: #e6ebff;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 15px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.sort-form select:hover {
+  border-color: #39d5ff;
+  box-shadow: 0 0 10px rgba(57, 213, 255, 0.3);
+}
+
+/* Filter button (الأيقونة اليمينية) */
+.filter-btn {
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.filter-btn img {
+
+  width: 50px;
+  filter: brightness(1.3);
+  transition: 0.3s;
+  padding-right: 20px;
+}
+
+.filter-btn:hover img {
+  filter: brightness(2);
+}
+
+/* Intro Text */
+.services-intro {
+  text-align: center;
+  max-width: 1200px;
+  padding-top: 30px;
+  margin: 0 auto 10px;
+  color: #bfc8e8;
+  font-style: italic;
+  font-size: 21px;
+  line-height: 1.6;
+}
+  
+  /* ===== Fade + Glow animation for intro text ===== */
+.fade-glow {
+  opacity: 0;
+  animation: fadeIn 2s ease-out forwards, glowPulse 2s ease-in-out 1.5s infinite;
+  display: inline-block;
+}
+
+/* أول أنيميشن — ظهور ناعم */
+@keyframes fadeIn {
+  0% { opacity: 0; transform: translateY(10px); }
+  100% { opacity: 1; transform: translateY(0); }
+}
+
+/* ثاني أنيميشن — لمعان بسيط مره فخم */
+@keyframes glowPulse {
+  0%   { text-shadow: 0 0 10px #b07dff, 0 0 20px #caa8ff; }
+  50%  { text-shadow: 0 0 25px #d7b0ff, 0 0 40px #e6d1ff; }
+  100% { text-shadow: 0 0 10px #b07dff, 0 0 20px #caa8ff; }
+}
+
+.services-container.c2{
+	display:flex;
+	justify-content:flex-start;
+	padding:90px;
+	
+}
+.service-card.c1 {
+	width: 450px;
+	height: 700px;
+}
+.service-card.c1 img{
+	height: 420px;
+}
+.service-card.c1 button {
+  margin: 15px 15px;
+  padding: 10px 25px;
+  border: none;
+  border-radius: 6px;
+  background:linear-gradient(40deg, #0A00FF, #8A00FF, #FF00C8, #FF6EC7);
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.service-card.c1 button:hover {
+   filter: brightness(2);
+}
+body.services-page {
+  background-image: url("images/space stars.jpg");
+  background-size: cover;          /* تخليها تغطي الشاشة كاملة */
+  background-position: center;     /* تخلي الصورة متوسّطة */
+  background-repeat: no-repeat;    /* تمنع التكرار */
+  background-attachment: fixed;    /* تثبّت الصورة لما تسوين سكرول */
+}
+body.services-page::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(5, 8, 25, 0.7); /* ← غامق شوي، غيري الشفافية لو تبين */
+  z-index: -1; /* يخليه خلف كل المحتوى */
+}
+
+
+
+
+
+
+
+/* ===== ABOUT US PAGE ===== */
+
+/* ==== PAGE BACKGROUND ==== */
+.about-bg {
+  background: url("images/stars.png") center/cover no-repeat fixed;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* ==== TEAM SECTION ==== */
+#about-intro .container,
+#team-members .container,
+#join-team .container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+#about-intro h1 {
+  font-size: clamp(26px, 3vw, 36px);
+  margin: 6px 0 10px;
+}
+
+#team-members h2,
+#join-team h2 {
+  font-size: clamp(22px, 2.2vw, 28px);
+  margin: 8px 0 16px;
+}
+
+.team-container {
+  display: flex;
+  overflow-x: auto; /* Enable horizontal scroll */
+  gap: 20px; /* Space between items */
+  padding: 10px;
+}
+
+.team-member {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  flex: 0 0 calc(25% - 20px); /* Set each team member to take 25% of the container minus the gap */
+  box-sizing: border-box;
+}
+
+/* Hover effect: Apply glow effect on the entire team member box */
+.team-member:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px 10px rgba(255, 255, 255, 0.8); /* White glow effect */
+  border-color: rgba(255, 255, 255, 0.3); /* Light white border color */
+}
+
+.team-member img {
+  width: 100%;
+  border-radius: 10px;
+  margin-bottom: 10px;
+  display: block;
+  transition: transform 0.2s ease, box-shadow 0.3s ease; /* Add smooth transition for transform and shadow */
+}
+
+/* Hover effect on image inside the box */
+.team-member img:hover {
+  transform: scale(1.05); /* Slightly enlarge the image */
+}
+
+/* Team member name and role styling */
+.team-member .name {
+  font-weight: 700;
+  margin: 4px 0 2px;
+}
+
+.team-member .role {
+  opacity: .85;
+  margin-bottom: 8px;
+}
+
+.team-member .staff-link {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.team-member .staff-link:hover {
+  filter: brightness(1.12);
+}
+
+/* ==== JOIN TEAM FORM ==== */
+/* ↓ Change the image here for the form background */
+##join-team .container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+#join-team h2 {
+  font-size: clamp(24px, 2.6vw, 32px);
+  margin: 8px 0 14px;
+  text-align: center;
+  color: #eaeaea;
+}
+
+#join-team label {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 10px 0 6px;
+  color: white;
+}
+
+#join-team input,
+#join-team textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #1D2951;
+  color: white;
+  margin-bottom: 12px;
+}
+
+#join-team input:focus,
+#join-team textarea:focus {
+  background-color: #1D2951;
+  border-color: #7b6dff;
+  outline: none;
+}
+
+#join-team button[type="submit"] {
+  background: linear-gradient(90deg, #7b6dff, #39d5ff);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s, transform 0.3s;
+  margin-top: 10px;
+}
+
+#join-team button[type="submit"]:hover {
+  background: linear-gradient(90deg, #39d5ff, #7b6dff);
+  transform: scale(1.05);
+}
+
+/* نموذج الانضمام للفريق */
+#join-team form {
+  width: 100%;
+  background-image: url('images/Nebula13.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+/* File input specific styling */
+#join-team input[type="file"] {
+  background-color: #1D2951;
+  color: white;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Placeholder styling */
+#join-team input::placeholder,
+#join-team textarea::placeholder {
+  color: #cccccc;
+  opacity: 0.8;
+}
+
+.photo-container {
+  margin-bottom: 10px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  #join-team form {
+    padding: 16px;
+  }
+}
+
+
+
+
+/* ===== Provider Dashboard ===== */
+
+/* خلفية الصفحة */
+.provider-bg {
+  background: linear-gradient(160deg, #0b0f2a 0%, #141b3b 60%, #1d244d 100%);
+  min-height: 100vh;
+  width: 100%;
+  position: relative;
+}
+
+.provider-bg::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.35); /* درجة التعتيم الخفيفة */
+  z-index: 0;
+}
+
+.provider-bg > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* ===== عنوان الصفحة ===== */
+.provider-dashboard .container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+.provider-dashboard h2 {
+  font-size: clamp(24px, 2.6vw, 32px);
+  margin: 8px 0 14px;
+  text-align: center;
+  color: #eaeaea;
+}
+
+.provider-dashboard .service-list h3 {
+  font-size: clamp(18px, 2vw, 22px);
+  margin: 10px 0 14px;
+  opacity: 0.9;
+  text-align: center;
+}
+
+/* ===== شبكة الخدمات 3×3 ===== */
+.provider-dashboard .service-container {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 20px);
+  margin-top: 20px;
+}
+
+.provider-dashboard .service-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  color: #eaeaea;
+}
+
+/* Hover effect: Apply glow effect on the entire service box */
+.provider-dashboard .service-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 0 20px 10px rgba(124, 77, 255, 0.8); /* Purple glow effect */
+  border-color: rgba(124, 77, 255, 0.4); /* Light purple border color */
+}
+
+.provider-dashboard .service-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.provider-dashboard .service-box p {
+  margin: 2px 0;
+  font-size: 16px;
+}
+
+/* Responsive grid */
+@media (max-width: 900px) {
+  .provider-dashboard .service-container {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media (max-width: 560px) {
+  .provider-dashboard .service-container {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===== Action Buttons Section ===== */
+.actions-section {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-top: 50px;
+  margin-bottom: 60px;
+}
+
+.actions-container {
+  display: flex;
+  gap: 30px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+/* المربعات */
+.action-box {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 260px;
+  padding: 18px 24px;
+  border-radius: 14px;
+  text-decoration: none;
+  color: #eaeaea;
+  background: rgba(255, 255, 255, 0.06);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  box-shadow: 0 0 10px rgba(124, 77, 255, 0); /* No glow initially */
+  transition: transform 0.25s ease, box-shadow 0.3s ease, background 0.3s ease,
+    border-color 0.3s ease;
+}
+
+.action-box:hover {
+  background: rgba(124, 77, 255, 0.15);
+  border-color: rgba(124, 77, 255, 0.6);
+  box-shadow: 0 0 15px rgba(124, 77, 255, 0.5),
+    0 0 30px rgba(124, 77, 255, 0.25); /* Glow effect on hover */
+  transform: translateY(-4px);
+  animation: glow 2s infinite; /* Pulsing glow effect */
+}
+
+.action-text {
+  font-size: 17px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+.arrow {
+  font-size: 22px;
+  transition: transform 0.3s ease;
+}
+
+.action-box:hover .arrow {
+  transform: translateX(6px);
+}
+
+/* تأثير الوميض */
+@keyframes glow {
+  0% {
+    box-shadow: 0 0 6px rgba(124, 77, 255, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 18px rgba(124, 77, 255, 0.5);
+  }
+  100% {
+    box-shadow: 0 0 6px rgba(124, 77, 255, 0.2);
+  }
+}
+
+/* Responsive للمستطيلات */
+@media (max-width: 600px) {
+  .action-box {
+    width: 100%;
+    max-width: 340px;
+  }
+}
+
+
+
+
+
+
+/* ===== Manage Staff Members ===== */
+.manage-staff {
+  padding: 30px 0;
+}
+
+.manage-staff .container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+.manage-staff h2 {
+  font-size: clamp(24px, 2.6vw, 32px);
+  margin: 8px 0 14px;
+  text-align: center;
+  color: #eaeaea;
+}
+
+.manage-staff .staff-list h3 {
+  font-size: clamp(18px, 2vw, 22px);
+  margin: 10px 0 14px;
+  opacity: 0.9;
+  text-align: center;
+}
+
+/* شبكة أعضاء الفريق */
+.manage-staff .staff-container {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: clamp(12px, 2vw, 20px);
+  margin-top: 20px;
+}
+
+.manage-staff .staff-box {
+  background: rgba(255, 255, 255, 0.03);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 12px;
+  padding: 14px;
+  text-align: center;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+  color: #eaeaea;
+}
+
+.manage-staff .staff-box:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.28);
+  border-color: rgba(124, 77, 255, 0.4);
+}
+
+.manage-staff .staff-box img {
+  width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 10px;
+}
+
+.manage-staff .staff-box p {
+  margin: 2px 0;
+  font-size: 16px;
+}
+
+.manage-staff .staff-link {
+  display: inline-block;
+  padding: 8px 12px;
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  border-radius: 10px;
+  text-decoration: none;
+  color: inherit;
+  transition: filter 0.2s ease, transform 0.2s ease;
+}
+
+.manage-staff .staff-box:hover .staff-link {
+  transform: translateX(6px);
+  filter: brightness(1.12);
+}
+
+/* زر Select All و Delete */
+.select-delete-container {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.select-all-btn,
+.delete-btn {
+  background-color: blue;
+  color: #fff;
+  border: none;
+  padding: 8px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.select-all-btn:hover,
+.delete-btn:hover {
+  background-color: #d32f2f;
+}
+
+/* نموذج إضافة عضو جديد */
+..add-new-staff form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.add-new-staff label {
+    display: block;
+    font-weight: 600;
+    margin: 10px 0 6px;
+}
+
+.add-new-staff input,
+.add-new-staff textarea,
+.add-new-staff select {
+    width: 100%;
+    padding: 10px;
+    border-radius: 10px;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    background: rgba(0, 0, 0, 0.2);
+    color: inherit;
+    margin-bottom: 12px;
+}
+
+.add-new-staff button[type="submit"] {
+    background: linear-gradient(90deg, #7b6dff, #39d5ff);
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-new-staff button[type="submit"]:hover {
+    background: linear-gradient(90deg, #39d5ff, #7b6dff);
+    transform: scale(1.05);
+}
+
+/* Large textarea styling */
+.large-input-box {
+    margin-top: 20px;
+}
+
+.large-input-box textarea {
+    margin-bottom: 20px;
+    height: 150px;
+    resize: vertical;
+}
+
+/* File input specific styling */
+.add-new-staff input[type="file"] {
+    background: rgba(0, 0, 0, 0.2);
+    color: inherit;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    padding: 8px;
+}
+
+.add-new-staff {
+  width: 100%;
+  margin-top: 30px;
+  background-image:url('images/Nebula13.png');
+  background-size: cover;
+  background-position:center ;
+  background-repeat: no-repeat;
+}
+
+.staff-box input[type="checkbox"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.staff-box img {
+    width: 100%;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 10px;
+}
+
+.staff-box h3 {
+    margin: 8px 0 5px 0;
+    color: #eaeaea;
+    font-size: 18px;
+}
+
+.staff-box p {
+    margin: 3px 0;
+    font-size: 14px;
+    color: #ccc;
+}
+
+.staff-box strong {
+    color: #7c4dff;
+}
+
+.staff-link {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 6px 12px;
+    background: rgba(124, 77, 255, 0.2);
+    border: 1px solid rgba(124, 77, 255, 0.4);
+    border-radius: 6px;
+    color: #eaeaea;
+    text-decoration: none;
+    font-size: 14px;
+    transition: all 0.3s ease;
+}
+
+.staff-link:hover {
+    background: rgba(124, 77, 255, 0.4);
+    transform: translateY(-2px);
+}
+
+/* Responsive grid */
+@media (max-width: 900px) {
+    .manage-staff .staff-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 560px) {
+    .manage-staff .staff-container {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+
+
+
+
+/* ===== Add New Service ===== */
+.add-new-service {
+  padding: 30px 0;
+}
+
+.add-new-service .container {
+  max-width: 1100px;
+  margin: 28px auto;
+  padding: 0 16px;
+}
+
+.add-new-service h2 {
+  font-size: clamp(24px, 2.6vw, 32px);
+  margin: 8px 0 14px;
+  text-align: center;
+  color: #eaeaea;
+}
+
+.add-new-service label {
+  display: block;
+  font-weight: bold;
+  font-size: 16px;
+  margin: 10px 0 6px;
+  color: white;
+}
+
+.add-new-service input,
+.add-new-service select,
+.add-new-service textarea {
+  width: 100%;
+  padding: 10px;
+  font-size: 16px;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  background-color: #1D2951;
+  color: white;
+  margin-bottom: 12px;
+}
+
+.add-new-service input:focus,
+.add-new-service select:focus,
+.add-new-service textarea:focus {
+  background-color: #1D2951;
+  border-color: #7b6dff;
+  outline: none;
+}
+
+.add-new-service button[type="submit"] {
+  background: linear-gradient(90deg, #7b6dff, #39d5ff);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  font-size: 18px;
+  cursor: pointer;
+  width: 100%;
+  transition: background-color 0.3s, transform 0.3s;
+}
+
+.add-new-service button[type="submit"]:hover {
+  background: linear-gradient(90deg, #39d5ff, #7b6dff);
+  transform: scale(1.05);
+}
+
+/* نموذج الخدمة */
+.add-new-service form {
+  width: 100%;
+  background-image: url('images/Nebula13.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 20px;
+  margin-top: 30px;
+}
+
+/* File input specific styling */
+.add-new-service input[type="file"] {
+  background-color: #1D2951;
+  color: white;
+  border: 1px solid #ddd;
+  padding: 8px;
+}
+
+/* Placeholder styling */
+.add-new-service input::placeholder,
+.add-new-service textarea::placeholder {
+  color: #cccccc;
+  opacity: 0.8;
+}
+
+/* Responsive grid */
+@media (max-width: 900px) {
+  .add-new-service form {
+    padding: 16px;
+  }
+}
+/* ===== CONTAINER FOR CUSTOMER PAGE CONTENT ===== */
+
+/* ===== BUTTONS CONTAINER (Flexbox) ===== */
+.button-container {
+  display: flex;
+  flex-direction: column;  /* Stack buttons vertically */
+  align-items: center; /* Center buttons horizontally */
+  gap: 20px; /* Space between buttons */
+  margin-bottom: 20px; /* Space at the bottom of the section */
+  position: relative; /* Make sure dropdown stays inside this container */
+}
+
+.button-container { align-items: stretch; } 
+
+/* Service Button Styling with Gradient */
+.c-button {
+  padding: 30px;
+  background: linear-gradient(40deg, #7b6dff, #39d5ff); /* Gradient from purple to blue */
+  text-align: center;
+  text-decoration: none;
+  font-size: 20px;
+  color: white;
+  border-radius: 5px;
+  transition: background-color 0.3s, transform 0.2s ease-in-out;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  display: inline-block;
+  width: 100%; /* Make buttons take full width */
+  max-width: 100%; /* Maximum width for buttons */
+}
+
+
+.c-button:hover {
+  background: linear-gradient(40deg, #8a72ff, #45d8ff);
+  box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+  transform: translateY(-5px); /* Pop-up effect */
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .button-container {
+    flex-direction: column; /* Stack buttons vertically on smaller screens */
+    align-items: center; /* Center the buttons */
+  }
+
+  .c-button {
+    width: 100%;
+    max-width: 400px;
+  }
+}
+
+  .c-container  {
+    margin: 20px auto;
+    padding: 15px;
+  }
+}
+/* ===== DROPDOWN CONTAINER ===== */
+.dropdownC {
+  position: relative;
+  width: 100%;
+}
+
+/* Dropdown content - Initially hidden */
+.dropdownC-content {
+  display: none; /* Hide dropdown by default */
+  position: absolute;
+  top: 100%; /* Position the dropdown below the button */
+  left: 0;
+  width: 100%; /* Ensure it takes up the full width of the button container */
+  background-color: #11173a;
+  border-radius: 8px;
+  padding: 10px 15px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+
+
+
+/* Show dropdown content when hovering over the button or the content */
+.dropdownC:hover .dropdownC-content,
+.dropdownC-content:hover {
+  display: block;
+}
+
+.dropdownC.c-button {
+  display: block;         /* يخلي الزر ياخذ سطر كامل */
+  width: 100%;            /* يخليه بعرض الحاوية */
+  max-width: 100%;        /* يمنع أي تقليص */
+  box-sizing: border-box; /* يضمن إن البادينق ما يزود الحجم */
+  margin: 0 auto;
+}
+
+/* Styling for the list inside the dropdown */
+.previous-services {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+/* Individual service item styling */
+.service-item {
+  background-color: rgba(0, 0, 30, 0.7);
+  padding: 10px;
+  border-radius: 8px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.service-details {
+  color: #e8eefc;
+}
+
+.service-name {
+  font-weight: bold;
+}
+
+.price, .date-time, .status {
+  font-size: 14px;
+}
+
+/* Add hover effect on service items */
+.service-item:hover {
+  background-color: #1e2b6c; 
+  transform: translateY(-3px); /* يرتفع شوي بشكل ناعم */
+  box-shadow: 0 0 10px rgba(123, 182, 255, 0.4);
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  .c-button {
+    width: 100%;
+    max-width: 400px; /* Make buttons take full width on smaller screens */
+  }
+}
+/* Footer Styling (full-width) */
+footer {
+  text-align: center;
+ padding: 25px 0;
+  background-color: rgba(14, 19, 53, 0.8);
+  border-top: 1px solid rgba(255, 255, 255, 0.1);
+  width: 100%;
+}
+
+
+
+footer p {
+  color: #9fb0d9;
+  font-size: 14px;
+}
+
+
+
+footer a:hover {
+  text-decoration: underline;
+}
+
+footer .copyright {
+  margin-top: 15px;
+  font-size: 13px;
+  color: #7b7b7b;
+}
+
+/* Responsive grid */
+@media (max-width: 768px) {
+  header nav {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  header ul {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+
+
+/* Unique classes for Service Page form elements */
+
+/* Service Page Container */
+.S-container {
+    max-width: 800px;
+    margin: 50px auto;
+    padding: 20px;
+    background-color: 0b0f2a;
+    background-image: url('images/Nebula13.png'); /* Replace with your image */
+    background-size: cover;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+}
+
+/* Unique Form Class */
+.S-form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Labels for Service Page form */
+.S-label {
+    font-weight: bold;
+    font-size: 16px;
+}
+
+/* Unique Input/Select/Textarea Styling */
+.S-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+	
+}
+
+/* Unique Button Styling for Request Form */
+.S-button {
+    background: linear-gradient(90deg, #7b6dff, #39d5ff); /* Gradient: Purple to Blue */
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 5px;
+    font-size: 18px;
+    cursor: pointer;
+    width: 100%; /* Make the button width stretch across */
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.S-button:hover {
+    background: linear-gradient(90deg, #39d5ff, #7b6dff);
+    transform: scale(1.05); /* Smooth pop effect */
+}
+
+/* Unique styling for the textarea in the Service Page form */
+.S-input {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    width: 100%;
+    background-color: #1D2951;  /* Background color */
+    color: white;  /* Text color */
+}
+
+
+.S-input:focus {
+    background-color: #1D2951;  /* Background color when focused */
+    border-color: #7b6dff;  /* Border color on focus */
+}
+/* === EVALUATION PAGE STYLES === */
+
+.E-container {
+  max-width: 750px;
+  margin: 60px auto;
+  padding: 30px;
+  background: rgba(15, 20, 55, 0.6);
+  background-image: url('images/Nebula15.png');
+  background-size:cover;
+  border-radius: 16px;
+  box-shadow: 0 0 30px rgba(120, 80, 255, 0.3);
+  backdrop-filter: blur(10px);
+  text-align: left;
+}
+
+.E-container h1 {
+  text-align: left;
+  color: #e8e8ff;
+  margin-bottom: 25px;
+  font-size: 28px;
+}
+
+.E-form {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.E-label {
+  font-weight: 600;
+  font-size: 17px;
+  color: #cdd4ff;
+}
+
+.E-input, .E-textarea {
+  padding: 12px;
+  font-size: 16px;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 8px;
+  background: rgba(0, 0, 20, 0.5);
+  color: #fff;
+  width: 100%;
+  background-color: #1D2951;
+}
+
+.E-textarea {
+  min-height: 160px;
+  resize: vertical;
+}
+
+/* === BUTTON === */
+.E-button {
+  background: linear-gradient(90deg, #7b6dff, #39d5ff);
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 8px;
+  font-size: 18px;
+  cursor: pointer;
+  transition: transform 0.3s, filter 0.3s;
+}
+
+.E-button:hover {
+  transform: scale(1.05);
+  filter: brightness(1.2);
+}
+
+/* === RESPONSIVE === */
+@media (max-width: 600px) {
+  .E-stars {
+    font-size: 26px;
+  }
+}
+
+/* Staff Profile Page Styles */
+
+/* Staff container layout */
+.staff-container {
+  display: flex;
+  flex-direction: column; /* Stack header and table vertically */
+  align-items: flex-start;
+  padding: 40px;
+  background-color: rgba(15, 20, 55, 0.7);
+  border-radius: 12px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+  margin: 20px;
+  width: 100%;
+}
+
+/* Staff header with name and image */
+.staff-header {
+  display: flex;
+  justify-content: flex-start; /* Align header items horizontally */
+  align-items: center;
+  width: 100%;
+  margin-bottom: 30px; /* Add space between header and table */
+}
+
+.staff-header h2 {
+  color: #e8e8ff;
+  font-size: 2rem;
+  margin-right: 30px; /* Space between name and image */
+}
+
+.staff-photo img {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: fill;
+  border: 4px solid #7b6dff;
+}
+
+/* Staff information table layout */
+.staff-table-container {
+  width: 100%;
+  margin-top: 30px;
+  background-image:url('images/Nebula16.png');
+  background-size: cover;
+  background-position:center ;
+  background-repeat: no-repeat;
+}
+
+.staff-table {
+  width: 100%;
+  border-collapse: collapse;
+  color: #e8eefc;
+}
+
+.staff-table th, .staff-table td {
+  padding: 15px;
+  text-align: left;
+  border: 1px solid #555;
+}
+
+.staff-table th {
+  background-color: rgba(0, 0, 0, 0.6);
+  font-weight: bold;
+  text-transform: uppercase;
+}
+
+.staff-table td {
+  background-color: rgba(0, 0, 30, 0.5);
+}
+
+/* Spanning cells */
+.staff-table td[rowspan="3"] {
+  background-color: rgba(0, 0, 50, 0.5);
+  text-align: center;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .staff-container {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .staff-header {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .staff-header h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .staff-photo img {
+    width: 120px;
+    height: 120px;
+  }
+
+  .staff-table {
+    width: 90%;
+    margin-top: 20px;
+  }
+}
+.staff-table td ul {
+  list-style-type: none; /* Removes default list bullet */
+  padding-left: 20px; /* Indentation for nested lists */
+}
+
+.staff-table td ul li {
+  margin: 5px 0; /* Space between items */
+}
+
+.staff-table td ul li ul {
+  list-style-type: circle; /* Change inner list style to circles */
+  padding-left: 20px;
+}
+
+.staff-table td ul li ul li {
+  margin: 3px 0; /* Space between sub-items */
+}
+
+.request-service-page .S-container {
+    margin: 0 auto;
+    padding: 20px;
+    width: 80%;
+}
+
+.request-service-page .S-form {
+    margin-top: 30px;
+}
+
+.request-service-page .S-label {
+    font-size: 16px;
+    margin-bottom: 10px;
+    display: block;
+}
+
+.request-service-page .S-input {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+}
+
+/* Button styles */
+.request-service-page .S-button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 10px 20px;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+    width: 100%;
+    font-size: 16px;
+}
+
+.request-service-page .S-button:hover {
+    background-color: #45a049;
+}
+
+/* Request Info Styling */
+.request-info {
+    background-color: #001f3d; /* Dark Blue Navy background */
+    color: white; /* White text */
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+}
+
+.request-info h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.request-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #fff;
+}
+
+.request-info p strong {
+    font-weight: bold;
+}
+
+
+.S-input, textarea {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 16px;
+    box-sizing: border-box;
+    word-wrap: break-word; /* Prevents text overflow */
+    white-space: normal; /* Ensures text will wrap correctly */
+    overflow-wrap: break-word; /* Breaks long words to avoid overflow */
+}
+
+/* Request Info Styling */
+.request-info {
+    background-color: #001f3d; /* Dark Blue Navy background */
+    color: white; /* White text */
+    border: 1px solid #ccc;
+    padding: 20px;
+    margin-top: 20px;
+    border-radius: 10px;
+    font-family: Arial, sans-serif;
+    word-wrap: break-word; /* Prevent text from spilling */
+}
+
+.request-info h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+    color: #fff;
+}
+
+.request-info p {
+    margin: 5px 0;
+    font-size: 16px;
+    color: #fff;
+    word-wrap: break-word; /* Prevent text from spilling */
+}
+
+.request-info p strong {
+    font-weight: bold;
+}
+/* Styles for No Services Message - Same Theme */
+#no-services-msg {
+    display: none;
+    text-align: center;
+    padding: 40px;
+    background-color: #001f3d; /* Dark Blue Navy background */
+    color: white; /* White text */
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+#no-services-msg h3 {
+    color: #fff;
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+#no-services-msg p {
+    color: #fff;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    line-height: 1.5;
+}
+
+#no-services-msg a {
+    color: #4da6ff; /* Light blue for links */
+    font-weight: bold;
+    text-decoration: none;
+}
+
+#no-services-msg a:hover {
+    text-decoration: underline;
+    color: #80c1ff;
+}
